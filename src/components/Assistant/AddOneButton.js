@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Button from '@material-ui/core/Button'
 
-import {incrementCounter} from '../services/sockets'
+import {incrementCounter} from '../../services/sockets'
 
 class AddOneButton extends Component {
   addOne = () => {

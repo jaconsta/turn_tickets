@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 
-import {separateTurn} from '../services/sockets'
+import {separateTurn} from '../../services/sockets'
 
 class RoomTurn extends Component {
   bookTurn = () => {

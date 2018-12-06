@@ -5,12 +5,13 @@ class TurnAssigned extends Component {
   static propTypes = {
     turnNumber: PropTypes.number
   }
-  
+
   render() {
     const { turnNumber } = this.props
     if (turnNumber === null) return null
     const turnContainerStyle = {
-      textAlign: 'center'
+      textAlign: 'center',
+      paddingBottom: '10px'
     }
     const turnNumberStyle = {
       fontSize: '8em'
@@ -19,7 +20,7 @@ class TurnAssigned extends Component {
     return (
       <div style={turnContainerStyle}>
         <div style={turnNumberStyle}>{turnNumber}</div>
-        <div>My turn is</div>
+        <div>My turn</div>
       </div>
     )
   }

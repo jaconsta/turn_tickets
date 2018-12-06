@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {subscribeToMyTurn} from '../services/sockets'
+import {subscribeToMyTurn} from '../../services/sockets'
 
 class MyTurn extends Component {
   constructor (props) {

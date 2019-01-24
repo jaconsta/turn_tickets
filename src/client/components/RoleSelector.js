@@ -13,7 +13,7 @@ const RoleSelector = props => {
         Client
       </Button>
       <Button variant="contained" color="secondary" onClick={roleSelected('assistant')}>
-        Controller
+        Agent
       </Button>
     </div>
   )

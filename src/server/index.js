@@ -1,18 +1,32 @@
-const http = require('http')
+let app = require('express')()
+const server = require('http').Server(app)
+const compression = require('compression')
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+const cors = require('cors')
 const socket = require('./socket/connection')
 const socketConnection = require('./socket')
+const apiRoutes = require('./apiRoutes')
 // Constants
 const SERVER_PORT = 8080
+const MONGO_URL = 'mongodb://localhost:27017/turn_tickets'
 
-const httpHandler = (req, res) => {
-  res.writeHead(200, {'Content-Type': 'application/json'})
-  res.end({'status': 'App running.'})
-}
+// Connect to DB
+mongoose.connect(MONGO_URL, {useNewUrlParser: true});
 
-const app = http.createServer(httpHandler)
+// CORS
+app.use(cors())
+// compress responses
+app.use(compression())
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+// Routing
+app.use('/api', apiRoutes)
 
-socket.connect(app)
+socket.connect(server)
 socket.getIo().on('connection', socketConnection)
 
-app.listen(SERVER_PORT)
+server.listen(SERVER_PORT)
 console.log(`Server connected on port ${SERVER_PORT}`)
